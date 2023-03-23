@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+     <meta charset="UTF-8" />
+     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+     <!-- Link de Bootstrao, debe ir antes que el de style.cc -->
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous" />
+     <link rel="stylesheet" href="/assets/styles/style.css">
+     <link rel="icon" href="./assets/img/favicon.ico" type="image/x-icon">
+     <title>Amazing events</title>
+</head>
+
+<body>
+
+     <nav class="navbar navbar-light bg-light">
+          <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+              <img src="/assets/img/Logo Amazing Events.png" alt="amazing Logo" width="" height="50">
+            </a>
+            <ul class="nav justify-content-end">
+               <li class="navitem">
+                 <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+               </li>
+               <li class="navitem">
+                 <a class="nav-link" href="upcomingEvents.html">Upcoming events</a>
+               </li>
+               <li class="navitem">
+                 <a class="nav-link" href="#">Past events</a>
+               </li>
+               <li class="navitem">
+                    <a class="nav-link" href="contact.html">Contact</a>
+               </li>
+               <li class="navitem">
+                    <a class="nav-link" href="Stats.html">Stats</a>
+               </li>
+             </ul>
+          </div>
+     </nav>
+
+     <div class="heroImage">
+          <h1>PAST EVENTS</h1>
+     </div>
+
+
+     <main>
+  
+          <div class="container" id="app">
+               <div class="row rowCheck" >
+                    <div class="d-flex flex-row col-lg-8 col-sm-4" id="checkboxIDup">
+                         <div class="form-check" v-for="cat of CategFil">
+                              <label class="form-check-label" for="inlineCheckbox1">{{cat}}
+                                <input class="form-check-input" v-on:change="filtro()" v-model="check" type="checkbox" :value="cat">
+                              </label>
+                            </div>
+                          <div class="form-inline float:right">
+                              <input type="text" class="form-control" placeholder="Search" v-model="nameInput" v-on:keyup="filtro()">
+                         </div>
+                            </div>
+                            <div class="d-flex flex-wrap gap-3 justify-content-center ">
+                                <div v-if="eventFilt.length > 0"  v-for="evento of eventFilt">
+                                     <div class="card" style="width: 18rem;">
+                                          <img :src="evento.image" class="card-img-top" v-bind:alt="evento.name" style="height: 15rem; object-fit: cover">
+                                          <div class="card-body">
+                                               <h5 class="card-title">{{evento.name}}</h5>
+                                               <p class="card-text">{{evento.description}}</p>
+                                               <a :href="'./details.html?id='+ evento._id" class="btn btn-danger" style="float:right">Details</a>
+                                              </div>
+                                     </div>
+                                </div>
+                                <div v-else>
+                                   <h5>Not found, try again.</h5>
+                                </div>
+            
+                  </div>
+            
+            
+          </div>
+        
+        
+        
+        
+        
+        </main>
+     
+     <!-- FOOTER -->
+     <footer>
+          <div class="bgFooter">
+               <div class="container">
+                    <div class="row footer">
+                         <div class="d-flex flex-row justify-content-between">
+                              <div class="iconsSocialMedia">
+                                   <img class="iconFooter" src="./assets/img/iconFB.png">
+                                   <img class="iconFooter" src="./assets/img/iconWP.png">
+                                   <img class="iconFooter" src="./assets/img/iconIG.png">
+                              </div>
+                         </div>
+                    </div>
+               </div>
+          </div>
+     </footer>
+
+     <!-- END FOOTER -->
+</body>
+
+
+     <!-- Script -->
+     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+     <script src="./assets/js/data.js"></script>
+     <script src="./assets/js/pastevents.js"></script>
+     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+          crossorigin="anonymous"></script>
+
+</html>
